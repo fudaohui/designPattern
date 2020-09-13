@@ -1,7 +1,5 @@
 package com.fdh.designpattern.iterator;
 
-import java.util.Objects;
-
 public class ArrayList_M<E> implements Collection_M<E> {
 
     int index = 0;
@@ -26,4 +24,31 @@ public class ArrayList_M<E> implements Collection_M<E> {
         return index;
     }
 
+    @Override
+    public Iterator_M iterator() {
+        return new ArrayListIterator();
+    }
+
+
+    private class ArrayListIterator implements Iterator_M<E> {
+
+        private int currentIndex = 0;
+
+        @Override
+        public boolean hashNext() {
+
+            if (currentIndex >= index) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        @Override
+        public E next() {
+            E object = objects[currentIndex];
+            currentIndex++;
+            return object;
+        }
+    }
 }

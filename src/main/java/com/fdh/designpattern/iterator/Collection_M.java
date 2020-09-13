@@ -10,4 +10,6 @@ public interface Collection_M<E> {
     void add(E e);
 
     int size();
+
+    Iterator_M iterator();
 }
